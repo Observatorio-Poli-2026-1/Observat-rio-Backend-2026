@@ -280,3 +280,5 @@ Bug 8: Alteração de Nome de Usuário Não Persiste Após Recarregar a Página
    * Sugestão de Correção: Backend (Correção Principal): Modificar a função update_profile em UserController.py para atualizar o nome de usuário tanto no Firestore (como já faz)       quanto no serviço Firebase Authentication, atualizando o campo display_name.
 
 ##Os bugs 04, 05, 06, 07 e 09 estão no frontend.
+
+Bugs

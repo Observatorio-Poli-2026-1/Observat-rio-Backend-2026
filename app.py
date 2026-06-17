@@ -23,14 +23,19 @@ app = FastAPI(
     description="RESP API ecomp - Disciplina de Engenharia da Computação - 2024.2",
 )
 
-origins = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "http://localhost:3000",
-    "https://www.observatorio.poli.br",
-    "https://observatorio.poli.br",
-    "*"
-]
+# Configure allowed CORS origins. For production, avoid using wildcard '*'.
+env_origins = os.getenv('ALLOWED_ORIGINS')
+if env_origins:
+    # Expect comma-separated origins in environment variable
+    origins = [o.strip() for o in env_origins.split(',') if o.strip()]
+else:
+    origins = [
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:3000",
+        "https://www.observatorio.poli.br",
+        "https://observatorio.poli.br",
+    ]
 
 
 #Corpo da requisição, informação enviada pelo cliente para a API

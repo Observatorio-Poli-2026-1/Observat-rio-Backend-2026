@@ -1,0 +1,13 @@
+fastapi[standard]
+firebase-admin
+pydantic[email]
+gunicorn
+uvicorn
+pycryptodome
+pyrebase4
+passlib
+python-dotenv
+python-multipart
+setuptools
+sendgrid==6.10.0
+

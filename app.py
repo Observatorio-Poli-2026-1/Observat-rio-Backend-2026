@@ -14,6 +14,7 @@ from routes import (
     DuvidasRoutes, 
     AdminRoutes
 )
+from routes import EmpresaRoutes
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -48,3 +49,4 @@ app.include_router(ArtigoRoutes.router)
 app.include_router(ProdutoRoutes.router)
 app.include_router(DuvidasRoutes.router)
 app.include_router(AdminRoutes.router)
+app.include_router(EmpresaRoutes.router)

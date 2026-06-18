@@ -16,3 +16,7 @@ def listar_solicitacoes_publicas():
 @router.get("/solicitacoes_empresa/", dependencies=[Depends(check_if_admin)])
 def listar_solicitacoes():
     return SolicitacaoEmpresaController().getSolicitacoes()
+
+@router.delete("/solicitacoes_empresa/{id}/", dependencies=[Depends(check_if_admin)])
+def deletar_solicitacao(id: str):
+    return SolicitacaoEmpresaController().deleteSolicitacao(id)

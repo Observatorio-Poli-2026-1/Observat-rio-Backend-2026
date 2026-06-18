@@ -53,3 +53,15 @@ class SolicitacaoEmpresaController(ConexaoFirestore):
                 return {'msg': 'Sem solicitacoes!'}
         except Exception as e:
             return {'msg': f'Houve um erro! {e}'}
+
+    def deleteSolicitacao(self, key_doc: str):
+        try:
+            doc_ref = self.db.collection('solicitacoes_empresa').document(key_doc)
+            doc = doc_ref.get()
+            if doc.exists:
+                doc_ref.delete()
+                return {'msg': 'Solicitacao deletada com sucesso!'}
+            else:
+                return {'msg': 'Solicitacao nao encontrada!'}
+        except Exception as e:
+            raise e

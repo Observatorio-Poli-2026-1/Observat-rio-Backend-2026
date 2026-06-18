@@ -14,6 +14,7 @@ from routes import (
     DuvidasRoutes, 
     AdminRoutes
 )
+from routes import EmpresaRoutes
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -27,9 +28,9 @@ origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
     "http://localhost:3000",
+    "http://127.0.0.1:3000",
     "https://www.observatorio.poli.br",
     "https://observatorio.poli.br",
-    "*"
 ]
 
 
@@ -48,3 +49,4 @@ app.include_router(ArtigoRoutes.router)
 app.include_router(ProdutoRoutes.router)
 app.include_router(DuvidasRoutes.router)
 app.include_router(AdminRoutes.router)
+app.include_router(EmpresaRoutes.router)

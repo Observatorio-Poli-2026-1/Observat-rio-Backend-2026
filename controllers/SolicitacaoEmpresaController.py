@@ -1,5 +1,7 @@
 from uuid import uuid4
 
+from fastapi import HTTPException
+
 from controllers.ConexaoFirestore import ConexaoFirestore
 from models.SolicitacaoEmpresaModel import SolicitacaoEmpresaModel
 
@@ -13,6 +15,7 @@ class SolicitacaoEmpresaController(ConexaoFirestore):
         try:
             key_doc = uuid4().hex
             dados.id = key_doc
+            dados.status = 'Pendente'
             docs = self.db.collection('solicitacoes_empresa').document(key_doc)
 
             docs.set(dados.toMaps())
@@ -39,6 +42,9 @@ class SolicitacaoEmpresaController(ConexaoFirestore):
 
             for doc in docs:
                 data = doc.to_dict()
+                if data.get('status') != 'Aprovado':
+                    continue
+
                 solicitacoes.append({
                     'id': data.get('id'),
                     'empresa': data.get('empresa'),
@@ -53,3 +59,31 @@ class SolicitacaoEmpresaController(ConexaoFirestore):
                 return {'msg': 'Sem solicitacoes!'}
         except Exception as e:
             return {'msg': f'Houve um erro! {e}'}
+
+    def aprovarSolicitacao(self, id: str):
+        try:
+            doc_ref = self.db.collection('solicitacoes_empresa').document(id)
+            doc = doc_ref.get()
+
+            if not doc.exists:
+                raise HTTPException(status_code=404, detail="Solicitacao nao encontrada")
+
+            doc_ref.update({'status': 'Aprovado'})
+            solicitacao = doc_ref.get().to_dict()
+            return {'msg': 'Solicitacao aprovada com sucesso!', 'solicitacao': solicitacao}
+        except Exception as e:
+            raise e
+
+    def recusarSolicitacao(self, id: str):
+        try:
+            doc_ref = self.db.collection('solicitacoes_empresa').document(id)
+            doc = doc_ref.get()
+
+            if not doc.exists:
+                raise HTTPException(status_code=404, detail="Solicitacao nao encontrada")
+
+            solicitacao = doc.to_dict()
+            doc_ref.delete()
+            return {'msg': 'Solicitacao recusada e excluida com sucesso!', 'solicitacao': solicitacao}
+        except Exception as e:
+            raise e

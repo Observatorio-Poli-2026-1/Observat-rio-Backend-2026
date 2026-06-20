@@ -9,6 +9,7 @@ class SolicitacaoEmpresaModel(BaseModel):
     descricao_problema: str
     expectativa: Optional[str] = ''
     prazo: Optional[str] = ''
+    status: Optional[str] = 'Pendente'
 
     def toMaps(self):
         return {
@@ -19,4 +20,5 @@ class SolicitacaoEmpresaModel(BaseModel):
             'descricao_problema': self.descricao_problema,
             'expectativa': self.expectativa,
             'prazo': self.prazo,
+            'status': self.status,
         }

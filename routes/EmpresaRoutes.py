@@ -16,3 +16,11 @@ def listar_solicitacoes_publicas():
 @router.get("/solicitacoes_empresa/", dependencies=[Depends(check_if_admin)])
 def listar_solicitacoes():
     return SolicitacaoEmpresaController().getSolicitacoes()
+
+@router.put("/solicitacoes_empresa/{id}/aprovar", dependencies=[Depends(check_if_admin)])
+def aprovar_solicitacao(id: str):
+    return SolicitacaoEmpresaController().aprovarSolicitacao(id)
+
+@router.delete("/solicitacoes_empresa/{id}/recusar", dependencies=[Depends(check_if_admin)])
+def recusar_solicitacao(id: str):
+    return SolicitacaoEmpresaController().recusarSolicitacao(id)

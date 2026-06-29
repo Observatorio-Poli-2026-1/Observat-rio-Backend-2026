@@ -93,3 +93,17 @@ class SolicitacaoEmpresaController(ConexaoFirestore):
             return {'msg': 'Solicitacao recusada e excluida com sucesso!', 'solicitacao': solicitacao}
         except Exception as e:
             raise e
+
+    def desaprovarSolicitacao(self, id: str):
+        try:
+            doc_ref = self.db.collection('solicitacoes_empresa').document(id)
+            doc = doc_ref.get()
+
+            if not doc.exists:
+                raise HTTPException(status_code=404, detail="Solicitacao nao encontrada")
+
+            doc_ref.update({'status': 'Pendente'})
+            solicitacao = doc_ref.get().to_dict()
+            return {'msg': 'Solicitacao desaprovada com sucesso!', 'solicitacao': solicitacao}
+        except Exception as e:
+            raise e

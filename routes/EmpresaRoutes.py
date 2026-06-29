@@ -25,6 +25,10 @@ def listar_solicitacoes():
 def aprovar_solicitacao(id: str):
     return SolicitacaoEmpresaController().aprovarSolicitacao(id)
 
+@router.put("/solicitacoes_empresa/{id}/desaprovar", dependencies=[Depends(check_if_admin)])
+def desaprovar_solicitacao(id: str):
+    return SolicitacaoEmpresaController().desaprovarSolicitacao(id)
+
 @router.delete("/solicitacoes_empresa/{id}/recusar", dependencies=[Depends(check_if_admin)])
 def recusar_solicitacao(id: str):
     return SolicitacaoEmpresaController().recusarSolicitacao(id)

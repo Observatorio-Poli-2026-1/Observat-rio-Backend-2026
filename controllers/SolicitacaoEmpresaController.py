@@ -12,10 +12,16 @@ class SolicitacaoEmpresaController(ConexaoFirestore):
         self.db = ConexaoFirestore.conect(self)
 
     def setSolicitacao(self, dados: SolicitacaoEmpresaModel):
+        return self._criarSolicitacao(dados, 'Pendente')
+
+    def setSolicitacaoAprovada(self, dados: SolicitacaoEmpresaModel):
+        return self._criarSolicitacao(dados, 'Aprovado')
+
+    def _criarSolicitacao(self, dados: SolicitacaoEmpresaModel, status: str):
         try:
             key_doc = uuid4().hex
             dados.id = key_doc
-            dados.status = 'Pendente'
+            dados.status = status
             docs = self.db.collection('solicitacoes_empresa').document(key_doc)
 
             docs.set(dados.toMaps())

@@ -9,6 +9,10 @@ router = APIRouter()
 def criar_solicitacao(dados: SolicitacaoEmpresaModel):
     return SolicitacaoEmpresaController().setSolicitacao(dados)
 
+@router.post("/admin/solicitacoes_empresa/", dependencies=[Depends(check_if_admin)])
+def criar_solicitacao_admin(dados: SolicitacaoEmpresaModel):
+    return SolicitacaoEmpresaController().setSolicitacaoAprovada(dados)
+
 @router.get("/solicitacoes_empresa_publicas/")
 def listar_solicitacoes_publicas():
     return SolicitacaoEmpresaController().getSolicitacoesPublicas()

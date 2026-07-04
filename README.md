@@ -84,7 +84,7 @@ Isso executará o backend na porta 8000 do seu host local. Entao voce pode acess
   
   ![image](https://github.com/user-attachments/assets/6062ab5d-879d-45de-9f4f-62ca36cf4b73)
 
-## Storys Trabalhadas no Observatório 2.0 (Jira)
+## Storys Trabalhadas no Observatório 3.0 (Jira)
 
 ![Sprint 1](https://github.com/user-attachments/assets/ff19bbc9-404d-4ad5-962b-307f961c683f)
 

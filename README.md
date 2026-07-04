@@ -9,7 +9,6 @@ Bem-vindo ao repositório de **Back-End** do **Observatório de Projetos** vers�
 - 🐍 **Python**: Linguagem principal utilizada no desenvolvimento do back-end.
 - ⚡ **FastAPI**: Framework moderno e performático para construção de APIs RESTful.
 - 🔥 **Firestore Database**: Banco de dados NoSQL da Google, usado para armazenar dados em tempo real e de forma escalável.
-- ☁️ **Render Web Service**: Plataforma utilizada para o deploy automatizado do back-end na nuvem.
 - 🐳 **Docker**: Utilizado para criar contêineres, garantindo ambiente consistente de desenvolvimento e produção.
 
 ## 🌐 Endpoints:

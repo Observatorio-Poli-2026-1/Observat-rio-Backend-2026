@@ -58,10 +58,6 @@ Bem-vindo ao repositório de **Back-End** do **Observatório de Projetos** vers�
 ```uvicorn app:app --host 0.0.0.0 --port 8000```
   - Observação: no comando uvicorn app:app, o primeiro app é o nome do arquivo (app.py) e o segundo é a variável FastAPI definida dentro dele (app = FastAPI()).
 
-### ☁️ Deploy no Servidor Render
-- Após um commit na branch configurada, o Render faz o deploy automaticamente. Então, é necessário cadastrar no servidor Render os links do front e back-end
-- ⚠️ Atenção: verifique se todas as alterações foram testadas e validadas antes de fazer push, pois o deploy ocorrerá automaticamente.
-
 ### 🔐 Variáveis de Ambiente
 - É necessário criar um arquivo .env na raiz do projeto com as chaves corretas.
 - 📩 Solicite esse arquivo .env a outro desenvolvedor do projeto ou ao dono do sistema se ainda não tiver.
